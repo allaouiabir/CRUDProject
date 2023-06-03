@@ -32,10 +32,10 @@ public class scene3 extends Application{
 
 	VBox root3=new VBox(30);
     root3.setAlignment(Pos.CENTER);
-	Scene scene3 = new Scene(root3,800,600,Color.AQUA);
+	Scene scene3 = new Scene(root3, 1280, 650);
 	Main scene1=new Main();
 	primaryStage.setScene(scene3);
-	primaryStage.setTitle("View Contact");
+	primaryStage.setTitle("View My Contacts");
 	
     //nom de l'application et son style
 	Text appName = new Text(50, 50, "MyContactKeeper");
@@ -117,6 +117,9 @@ public class scene3 extends Application{
 
      });
 	
+	returne.setTextFill(Color.WHITE);
+	returne.setStyle("-fx-background-color: brown; ");
+	
 	//bouton quit
 	Button quit =new Button("quit");
 	//le clique sur le bouton quit						
@@ -134,6 +137,9 @@ public class scene3 extends Application{
 		quit.setEffect(null);
 
      });
+	
+	quit.setTextFill(Color.WHITE);
+	quit.setStyle("-fx-background-color: black; ");
 	
 	//mettre les buttons dune facon horizontale
     HBox buttonsBox = new HBox(10);
