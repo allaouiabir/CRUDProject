@@ -37,14 +37,16 @@ public class Scene2 extends Application{
 	public void updateTable(contacts newContact) {
         table.getItems().add(newContact);
     }
-	private TextField FnameField;
-    private TextField numField;
-    private TextField emailField;
-    private TextField mediaField;
-    private TextField adressField;
-    private TextField relationField;
-    private TextField dateField;
-    private TextField noteField;
+	
+	//textfield de formulaire
+	public static TextField FnameField;
+	public static TextField numField;
+	public static TextField emailField;
+	public static TextField mediaField;
+	public static TextField adressField;
+	public static TextField relationField;
+	public static TextField dateField;
+	public static TextField noteField;
     
 
 	 public  void fillFieldsWithContact(contacts contact) {
@@ -72,7 +74,7 @@ public class Scene2 extends Application{
 	public void start(Stage primaryStage) throws Exception {
 		VBox root2=new VBox();
         root2.setAlignment(Pos.CENTER);
-		Scene scene2 = new Scene(root2,800,600,Color.AQUA);
+		Scene scene2 = new Scene(root2, 1280, 650,Color.AQUA);
 		Main scene1=new Main();
 		primaryStage.setScene(scene2);
 		primaryStage.setTitle("Contact Management");
@@ -113,7 +115,7 @@ public class Scene2 extends Application{
         		,dateLabel,dateField,noteLabel,noteField);
         
         //pour poser le formulaire et table dune facon horizontale
-        HBox tableFormBox = new HBox(10);
+        HBox tableFormBox = new HBox(200);
         tableFormBox.setPadding(new Insets(10));
         
         //les colonnes de la table
@@ -177,6 +179,8 @@ public class Scene2 extends Application{
 		
 		//les boutons 
         DropShadow shadowa = new DropShadow(10, 3, 3, Color.gray(0));
+        
+        
 		//bouton retour
 		Button returne =new Button("return");
 		//le clique sur le bouton retour						
@@ -196,6 +200,9 @@ public class Scene2 extends Application{
 
          });
 		
+		returne.setTextFill(Color.WHITE);
+		returne.setStyle("-fx-background-color: brown; ");
+		
 		//bouton quit
 		Button quit =new Button("quit");
 		//le clique sur le bouton quit						
@@ -213,6 +220,8 @@ public class Scene2 extends Application{
 			quit.setEffect(null);
 
          });
+		quit.setTextFill(Color.WHITE);
+		quit.setStyle("-fx-background-color: black; ");
 		
 		//CRUD buttons
 		//insert
@@ -229,7 +238,7 @@ public class Scene2 extends Application{
 		//changer la couleur du texte dans un bouton
 		insert.setTextFill(Color.WHITE);
 		//changer le background dun bouton
-		insert.setStyle("-fx-background-color: blue; ");
+		insert.setStyle("-fx-background-color: green; ");
 		
 		insert.setOnAction(new EventHandler<ActionEvent>() {
 	            @Override
@@ -253,7 +262,11 @@ public class Scene2 extends Application{
 
 	                // Appeler la méthode insert() de la classe contactsDAO
 	                contactsDAO contacts = new contactsDAO();
-	                contacts.insert(newContact);	                
+	                contacts.insert(newContact);	
+	                
+
+		            table.getItems().clear();
+		         	table.getItems().addAll(contactsDAO.getAllContacts());
 
 	            }
 	        });
@@ -318,6 +331,10 @@ public class Scene2 extends Application{
 				            contactsDAO.update(selectedContact, fullName, numberPhone, email, socialMedia, adress,
 				                    relationship, dates, notes);
 				            
+				            table.getItems().clear();
+				         	table.getItems().addAll(contactsDAO.getAllContacts());
+
+				            
 				           
 
 			    }}}
@@ -379,7 +396,7 @@ public class Scene2 extends Application{
 		});
 
 
-		
+		//bouton de supprimr le contenu des champs
 		Button clearfields = new Button("clearfields");
 		clearfields.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -387,11 +404,46 @@ public class Scene2 extends Application{
             	emptyFields();           	           	
             }});
 		
+		clearfields.setTextFill(Color.WHITE);
+		clearfields.setStyle("-fx-background-color: gray; ");
+		
+		clearfields.addEventHandler(MouseEvent.MOUSE_ENTERED, (MouseEvent ev) -> {
+			clearfields.setEffect(shadowa);
+
+         });
+
+		clearfields.addEventHandler(MouseEvent.MOUSE_EXITED, (MouseEvent ev) -> {
+			clearfields.setEffect(null);
+
+         });
+		
+		//bouton e voir le profil
+		Button viewProfil = new Button("View Profil");
+		viewProfil.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+				scene4.start(primaryStage);
+
+
+            }});
+		viewProfil.setTextFill(Color.WHITE);
+		viewProfil.setStyle("-fx-background-color: darkturquoise; ");
+		
+		viewProfil.addEventHandler(MouseEvent.MOUSE_ENTERED, (MouseEvent ev) -> {
+			viewProfil.setEffect(shadowa);
+
+         });
+
+		viewProfil.addEventHandler(MouseEvent.MOUSE_EXITED, (MouseEvent ev) -> {
+			viewProfil.setEffect(null);
+
+         });
+		
 		
 		//mettre les buttons dune facon horizontale
         HBox buttonsBox = new HBox(10);
         buttonsBox.setAlignment(Pos.CENTER);
-        buttonsBox.getChildren().addAll(insert,update,delete,clearfields,returne,quit);
+        buttonsBox.getChildren().addAll(insert,update,delete,clearfields,viewProfil,returne,quit);
 
 		
 		
