@@ -30,7 +30,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) {
         try {
             BorderPane root = new BorderPane();
-            Scene scene = new Scene(root, 800, 400, Color.ALICEBLUE);
+            Scene scene = new Scene(root, 1280, 650);
             primaryStage.setScene(scene);
             primaryStage.show();
             primaryStage.setTitle("Welcome");
@@ -39,7 +39,7 @@ public class Main extends Application {
             centerBox.setAlignment(Pos.CENTER);
 
 
-
+            //le titre
             Text appName = new Text(50, 50, "MyContactKeeper");
             Font f = Font.font("Times New Roman", FontWeight.BOLD, 40);
             appName.setFont(f);
@@ -81,7 +81,14 @@ public class Main extends Application {
                 btn2.setEffect(null);
 
             });
-
+            
+            btn1.setTextFill(Color.WHITE);
+            btn1.setStyle("-fx-background-color:darkturquoise ; ");
+            
+            btn2.setTextFill(Color.WHITE);
+            btn2.setStyle("-fx-background-color: darkturquoise; ");
+           
+            
             HBox buttonBox = new HBox(10);
             buttonBox.setAlignment(Pos.CENTER);
             buttonBox.getChildren().addAll(btn1, btn2);
