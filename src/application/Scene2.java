@@ -74,7 +74,7 @@ public class Scene2 extends Application{
 	public void start(Stage primaryStage) throws Exception {
 		VBox root2=new VBox();
         root2.setAlignment(Pos.CENTER);
-		Scene scene2 = new Scene(root2, 1280, 650,Color.AQUA);
+		Scene scene2 = new Scene(root2, 1280, 650);
 		Main scene1=new Main();
 		primaryStage.setScene(scene2);
 		primaryStage.setTitle("Contact Management");
