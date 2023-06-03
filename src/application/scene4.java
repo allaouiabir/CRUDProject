@@ -81,8 +81,7 @@ public class scene4 {
         
 		String number = Scene2.numField.getText();
 		String email = Scene2.emailField.getText();
-		String media = Scene2.mediaField.getText();
-		
+		String media = Scene2.mediaField.getText();		
 		String adress = Scene2.adressField.getText();
 		String relation = Scene2.relationField.getText();
 		String date = Scene2.dateField.getText();
@@ -98,7 +97,7 @@ public class scene4 {
 		Text textdate = new Text (date);
 		Text textnote = new Text (note);
 		
-		
+		//les labels
 		Label FnameLabel = new Label("Full Name");
        
         Label numLabel = new Label("Number Phone");
@@ -124,6 +123,7 @@ public class scene4 {
 		grille.add(dateLabel, 0, 6);
 		grille.add(noteLabel, 0, 7);
 		 
+		//pour avoir une jolie grille bien organisee on a ajouter les : dans une colonne
 		String npoint = new String(":");
 		Text npoints = new Text(npoint);
 		grille.add(npoints, 1, 0);
@@ -168,7 +168,7 @@ public class scene4 {
 		grille.setVgap(40);
 		grille.setHgap(60);
 		
-		
+		//les 2 boutons
 		Button returne = new Button("return");
 		Button print = new Button("print now");
 		
@@ -178,7 +178,7 @@ public class scene4 {
 		root4.getChildren().addAll(text,grille);
 		hbox1.setAlignment(Pos.BOTTOM_RIGHT);
 		
-		
+		//un peu de style shadow couleur
 		//le clique sur le bouton retour
 		 DropShadow shadowa = new DropShadow(10, 3, 3, Color.gray(0));
 				returne.setOnAction((EventHandler<ActionEvent>)new EventHandler<ActionEvent>(){
@@ -220,7 +220,12 @@ public class scene4 {
 		        });
 				returne.setId("returne");
 				print.setId("print");
-			
+				
+				returne.setTextFill(Color.WHITE);
+				returne.setStyle("-fx-background-color: brown; ");
+				
+				print.setTextFill(Color.WHITE);
+				print.setStyle("-fx-background-color: gray; ");
 
 				primaryStage.show();
 		
@@ -228,7 +233,7 @@ public class scene4 {
 
 
 
-
+//pour le bouton print pour imprimer le profil
 private static void printScene(Node content, Stage primaryStage) {
     PrinterJob printerJob = PrinterJob.createPrinterJob();
 
@@ -278,15 +283,5 @@ private static void printScene(Node content, Stage primaryStage) {
 
     }
 }
-
-
-
-
-
-
-
-
-
 	
-
 }
